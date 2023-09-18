@@ -1,0 +1,63 @@
+<div class="card mt-2" [class.red-bg]="todo.expired" [class.green-bg]="todo.completed"
+    [class.yellow-bg]=" !todo.expired && todo.dueDate && !todo.completed && isDueDateClose(todo.dueDate) "
+    [class.white-bg]=" !todo.completed && !todo.expired && (!todo.dueDate || !isDueDateClose(todo.dueDate)) ">
+    <div class="card-body">
+        <h5 class="card-title text-light">{{ todo.title }}</h5>
+        <hr class="text-light" />
+        <div class="user-information-container">
+            <div class="created-by">
+                <h6 class="card-subtitle text-light mb-2">Created by:</h6>
+                <img class="imgUser" src="{{ todo.createdBy.picture }}" alt="User image" />
+                <span class="card-text text-light">{{ todo.createdBy.fullName }}</span>
+            </div>
+            <div class="assigned-to" *ngIf="todo.assignedTo != null; else noAssignedTo">
+                <h6 class="card-subtitle mb-2 text-light">Assigned to:</h6>
+                <img class="imgUser" src="{{ todo.assignedTo.picture }}" alt="User image" />
+                <span class="card-text text-light">{{ todo.assignedTo.fullName }}</span>
+            </div>
+        </div>
+        <ng-template #noAssignedTo>
+            <div class="assign-user">
+                <h6 class="card-subtitle mb-2 text-light">Assign an User?</h6>
+                <button class="assign-user-button text-light" mat-stroked-button (click)="openUserModal()"
+                    *ngIf="!todo.expired; else impossibleToAssign">
+                    Assign User
+                </button>
+            </div>
+        </ng-template>
+        <ng-template #impossibleToAssign>
+            <span class="impossibleToAssign text-light">No available actions</span>
+        </ng-template>
+        <hr class="text-light" />
+        <div *ngIf="todo.dueDate != null; else noDateDisplay">
+            <h6 class="card-subtitle mb-2 text-light">Best complete by:</h6>
+            <p class="card-text text-light">
+                {{ todo.dueDate | date : "dd/MM/yyyy HH:mm" }}
+            </p>
+        </div>
+        <ng-template #noDateDisplay>
+            <h6 class="card-subtitle mb-2 text-light">Best complete by:</h6>
+            <p class="card-text text-light">No date specified</p>
+        </ng-template>
+        <div class="status-container">
+            <div *ngIf="todo.expired" class="card-footer text-muted" style="color: red !important">
+                EXPIRED
+            </div>
+            <div *ngIf="todo.completed" class="card-footer text-muted" style="color: green !important">
+                COMPLETED
+            </div>
+            <div *ngIf=" todo.dueDate && !todo.completed && !todo.expired && isDueDateClose(todo.dueDate) "
+                class="card-footer text-muted" style="color: orange !important">
+                DEADLINE
+            </div>
+            <div *ngIf="!todo.completed && !todo.expired && (!todo.dueDate || !isDueDateClose(todo.dueDate)) "
+                class="card-footer text-muted" style="color: darkgray !important">
+                AWAITING COMPLETION
+            </div>
+            <mat-slide-toggle [checked]="todo.completed" (change)="checkButton($event, todo.id ?? '')">
+                <span *ngIf="todo.completed">Uncheck</span>
+                <span *ngIf="!todo.completed">Check</span>
+            </mat-slide-toggle>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+mat-form-field { width: 90%; }
+.Update-btn { margin: 5px; }
+.Discard-btn { margin: 5px; }
+.assign-user-button { width: 100%; }
+.text-inside {
+    position: absolute;
+    left: 5px;
+    width: 100%;
+}
+.widthModal {
+    min-width: 300px;
+    background-color: rgba(83, 83, 83, 0.329);
+}

@@ -1,0 +1,91 @@
+.card { min-height: 300px !important; }
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.card-title { font-size: 30px; }
+.imgUser {
+    max-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+.imgUser:hover { transform: scale(2); }
+
+.white-bg { background-color: rgba(105, 105, 105, 0.6); }
+.red-bg { background-color: rgba(77, 18, 18, 0.8); }
+.green-bg { background-color: rgba(0, 64, 0, 0.8); }
+.yellow-bg {
+    background-color: rgba(255, 255, 0, 0.44);
+    background-color: rgba(102, 102, 0, 0.8);
+    box-shadow: 0 0 5px rgba(102, 102, 0, 0.8),
+        inset 0 0 5px rgba(102, 102, 0, 0.4);
+    animation: glow 0.8s ease-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #b6b900a2;
+        box-shadow: 0 0 5px rgba(255, 255, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    100% {
+        border-color: rgb(255, 238, 0);
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.9),
+            inset 0 0 10px rgba(255, 255, 0, 0.5);
+    }
+}
+
+
+.user-information-container {
+    display: flex;
+    justify-content: space-between;
+}
+.created-by,
+.assigned-to {
+    flex: 1 1 0px;
+    align-content: center;
+}
+.assign-user {
+    display: flex;
+    flex-direction: column;
+}
+.assign-user-button {
+    order: 2;
+    color: #339933;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2), inset 0 0 5px rgba(0, 255, 0, 0.1);
+    background: linear-gradient(#333933, #222922);
+    animation: glowAssign 1s ease-out infinite alternate;
+}
+
+@keyframes glowAssign {
+    0% {
+        border-color: #339933;
+        box-shadow: 0 0 3px rgba(0, 255, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    100% {
+        border-color: #6f6;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.6),
+            inset 0 0 8px rgba(0, 255, 0, 0.4);
+    }
+}
+.impossibleToAssign {
+    width: 150px;
+    font-size: 7;
+    line-height: 1;
+    color: red;
+}
+.vertical-hr {
+    border-left: 1px solid #000;
+    height: 100px;
+    margin: 0 10px;
+}
+.status-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+
+h1 {
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    align-self: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 42px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 15px rgb(160, 170, 17), 0 0 20px rgb(184, 100, 6);
+    animation: glow 2s linear infinite;
+}
+
+@keyframes glow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    
+    100% {
+        filter: hue-rotate(270deg);
+    }
+}

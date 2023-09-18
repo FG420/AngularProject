@@ -1,0 +1,25 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Todos-Simultaion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <div class="login-form">
+        <div class="text">Login</div>
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="field">
+                <div class="fas fa-envelope"></div>
+                <input type="email" placeholder="sample@sample.com" formControlName="username" />
+            </div>
+            <div class="field">
+                <div class="fas fa-lock"></div>
+                <input type="password" placeholder="Password" formControlName="password" />
+            </div>
+            <button type="submit">Login</button>
+            <div class="link">
+                Not register yet?
+                <a href="/register">Sign up!</a>
+            </div>
+        </form>
+    </div>
+</body>
